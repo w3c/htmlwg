@@ -320,8 +320,8 @@
     </section>
     <section id="specs">
       <h2>Specs</h2>
-      <div data-if="specifications.*">
-        <dl id="specList" data-query="specifications" data-filter='activeSpecs'>
+      <div data-if="specifications.*[latest-status!=Retired]">
+        <dl id="specList" data-query="specifications.*[latest-status!=Retired]">
           <div id='${shortname}'>
             <dt><a href='${shortlink}'>${title}</a> - <span class='status'>${latest-status}</span></dt>
             <dd>${description}</dd>
@@ -417,14 +417,6 @@
     import { fetchGroup, setW3CKey } from 'https://w3c.github.io/gargantua/w3c.js';
     import jsonrender from 'https://w3c.github.io/gargantua/jsonrender.js';
 
-    const functions =
-    {
-      activeSpecs: async function (specs) {
-        return (await Promise.all(specs.map(spec =>
-          query(spec["latest-status"]).then(s => (s !== "Retired") ? spec : undefined)))).filter(spec => spec);
-      },
-    };
-
     setW3CKey(document.documentElement.getAttribute("data-apiary-key"));
 
     let gid = document.documentElement.getAttribute("data-gid");
@@ -442,7 +434,7 @@
       if (ngid) gid = ngid;
       fetchGroup(gid).then(group => {
         let elts = document.querySelectorAll("*.group-data");
-        for (let element of elts) jsonrender({ group: group }, element, functions);
+        for (let element of elts) jsonrender({ group: group }, element);
       });
     })();
 
