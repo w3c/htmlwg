@@ -313,7 +313,6 @@
         <div data-if="services.*[type=wiki]">
           <li data-query="services.*[type=wiki]"><a href="${link}">Wiki</a></li>
         </div>
-
       </ul>
     </nav>
   </header>
@@ -360,7 +359,7 @@
             </dd>
           </div>
         </dl>
-        <p>Group has no face-to-meetings scheduled.</p>
+        <p>Group has no face-to-face meetings scheduled.</p>
       </div>
     </section>
     <section id="Contacts">
@@ -368,19 +367,19 @@
       <dl>
         <dt>Chairs:</dt>
         <dd id="chairs">
-          <span data-query="chairs">
-            <span data-if="connected-accounts.*[service=github]">
-              <a href="${connected-accounts.*[service=github].href}">${name}</a>
-              <span>${name}</span></span>,
-          </span>
+          <div data-if="chairs.*"><span data-query="chairs">
+              <span data-if="connected-accounts.*[service=github]">
+                <a href="${connected-accounts.*[service=github].href}">${name}</a>
+                <span>${name}</span></span>,
+            </span></div>
         </dd>
         <dt>Team contacts:</dt>
         <dd id="team-contacts">
-          <span data-query="team-contacts">
-            <span data-if="connected-accounts.*[service=github]">
-              <a href="${connected-accounts.*[service=github].href}">${name}</a>
-              <span>${name}</span></span>,
-          </span></td>
+          <div data-if="team-contacts.*"><span data-query="team-contacts">
+              <span data-if="connected-accounts.*[service=github]">
+                <a href="${connected-accounts.*[service=github].href}">${name}</a>
+                <span>${name}</span></span>,
+              </span></div>
         </dd>
       </dl>
     </section>
@@ -390,13 +389,11 @@
         <li>${title}</li>
       </ul>
     </section>
-    <div data-if="participations.*[individual=true].user.affiliations.*[id=36747]">
+    <div data-if="participations.*[invited-expert=true]">
       <section>
         <h2>Invited Experts</h2>
-        <ul id="participations" data-query="participations.*[individual=true]">
-          <div data-if="user.affiliations.*[id=36747]">
-            <li>${title}</li>
-          </div>
+        <ul id="participations" data-query="participations.*[invited-expert=true]">
+          <li>${title}</li>
         </ul>
       </section>
     </div>
