@@ -1,6 +1,6 @@
 # HTML Working Group
 
-This is our group's administration page - please see our [homepage](https://www.w3.org/2019/html/) for more info.
+This is our group's administration page - please see our [homepage](https://www.w3.org/groups/wg/htmlwg) for more info.
 
 If you have any admin related issues, please [file them](https://github.com/w3c/htmlwg/issues).
 
